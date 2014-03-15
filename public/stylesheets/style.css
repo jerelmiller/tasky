@@ -111,10 +111,10 @@ h6 {
   top: 0;
   bottom: 0;
   position: absolute;
-  background: #fd6e6e;
   color: #fff;
   padding: 0 10px;
   cursor: pointer;
+  border-right: 1px solid #424756;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   -ms-box-sizing: border-box;
