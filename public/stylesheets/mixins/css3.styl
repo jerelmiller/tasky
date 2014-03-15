@@ -1,0 +1,12 @@
+vendor(property, args)
+  -webkit-{property}: args
+  -moz-{property}: args
+  -ms-{property}: args
+  -o-{property}: args
+  {property}: args
+
+transform(transform)
+  vendor 'transform', transform
+
+box-sizing(sizing = border-box)
+  vendor 'box-sizing', sizing

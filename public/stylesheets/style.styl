@@ -1,5 +1,15 @@
-body
-  padding: 50px
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif
-a
-  color: #00B7FF
+@require 'variables/app'
+@require 'mixins/css3'
+
+// Global CSS Configuration
+@require 'layout/global'
+@require 'layout/utility'
+
+// Layouts
+@require 'layout/header'
+
+// Task List
+@require 'task_lists/base'
+
+// Tasks
+@require 'tasks/base'

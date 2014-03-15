@@ -1,0 +1,57 @@
+$task-action-size = 70px
+
+.task
+  margin-bottom: 20px
+  border: 1px solid $gray
+  padding: 20px 20px 20px $task-action-size + 20px
+  position: relative;
+  &:first-child
+    margin-top: 20px
+
+.task-description
+  font-size: 0.9em
+  font-weight: 300
+  font-style: italic
+
+.task-action
+  width: $task-action-size
+  position: absolute
+  left: 0
+  top: 0
+  bottom: 0
+  position: absolute
+  background: $red
+  color: white;
+  padding: 0 10px
+  cursor: pointer
+  box-sizing()
+
+  &:after
+    position: absolute;
+    top: 50%;
+    transform translateY(-50%)
+
+  [class*="fui-"]
+    font-size: 2.8em
+
+  &:hover
+    background: $teal
+    &:after
+      font-family: 'Flat-UI-Icons'
+      font-size: 2.8em
+      content: "\e00a"
+
+  &.finished
+    background: $teal
+    &:after
+      font-family: 'Flat-UI-Icons'
+      font-size: 2.8em
+      content: "\e00a"
+
+    &:hover
+      background: $red
+      &:after
+        font-family: 'Flat-UI-Icons'
+        font-size: 2.8em
+        content: "\e00b"
+        margin-left: 3px

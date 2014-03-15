@@ -1,0 +1,14 @@
+extends ../layout
+
+block header
+  h1.center= listName
+
+block content
+  .container
+    h3 Tasks
+    ul.task-list
+      each task in tasks
+        li.task
+          .task-action(class= task.done ? 'finished' : '')
+          h5.no-margin.red= task.name
+          .task-description= task.body

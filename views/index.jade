@@ -1,5 +1,7 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  h1.red.thin.center.vertically-center Welcome to Tasky
+  h6 To get started, enter the name of your task list
+  form(action='/task_lists' method='POST')
+    input(type='text' placeholder='Enter your task list name' name='list_name')
