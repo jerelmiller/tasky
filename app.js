@@ -29,8 +29,7 @@ if ('development' == app.get('env')) {
 }
 
 app.get('/', routes.Root);
-app.post('/task_lists', routes.TaskList.Create)
-app.get('/tasks', routes.Tasks.Index)
+app.get('/tasks', routes.Tasks.Index);
 app.post('/tasks', routes.Tasks.Create);
 app.put('/tasks/:id', routes.Tasks.Update);
 app.delete('/tasks/:id', routes.Tasks.Destroy);

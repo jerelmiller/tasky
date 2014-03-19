@@ -1,6 +1,19 @@
 window.Tasky = {};
 Tasky.Tasks = {};
 
+Tasky.Index = function() {
+  setTimeout(function() {
+    $('.main-title').addClass('in');
+  }, 500);
+
+  setTimeout(function() {
+    $('.button').addClass('in');
+    setTimeout(function() {
+      $('.button').removeClass('fade slow')
+    }, 800);
+  }, 1800);
+}
+
 function getId(target) {
   return $(target).parents('.task').data('task');
 }

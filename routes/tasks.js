@@ -4,7 +4,6 @@ module.exports = {
   Index: function(req, res) {
     Task.find({}, function(err, tasks) {
       res.render('tasks/index', {
-        listName: 'Jerels List',
         tasks: tasks || []
       });
     });
