@@ -1,7 +1,8 @@
 extends layout
 
 block content
-  h1.red.thin.center.vertically-center Welcome to Tasky
-  h6 To get started, enter the name of your task list
-  form(action='/task_lists' method='POST')
-    input(type='text' placeholder='Enter your task list name' name='list_name')
+  .container.push-quarter
+    h1.red.center Welcome to Tasky
+    h5 To get started, enter the name of your task list:
+    form(action='/task_lists' method='POST')
+      input(type='text' placeholder='Enter your task list name' name='list_name')

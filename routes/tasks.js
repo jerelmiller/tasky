@@ -1,22 +1,46 @@
-var utils = require('../lib/utils')
-var Task = require('../models/task')
+var Task = require('../models/task');
 
-var tasks = [
-  new Task('Clean the house', "It's a mess!"),
-  new Task('Wash car', 'Too dirty'),
-  new Task('Watch a movie', 'An old classic perhaps?')
-]
-
-tasks[1].finishTask()
-
-Tasks = {
+module.exports = {
   Index: function(req, res) {
-    theTasks = tasks.map(function(task) { return task.toJSON() });
-    res.render('tasks/index', {
-      listName: utils.titleize(req.params.name),
-      tasks: theTasks
+    Task.find({}, function(err, tasks) {
+      res.render('tasks/index', {
+        listName: 'Jerels List',
+        tasks: tasks || []
+      });
+    });
+  },
+
+  Create: function(req, res) {
+    new Task(req.body).save(function(err, task) {
+      res.redirect('/tasks');
+    });
+  },
+
+  Update: function(req, res) {
+    Task.update({ _id: req.params.id }, req.body, { multi: false }, function(err, count) {
+      res.status(200).json({ count: count });
+    });
+  },
+
+  Finish: function(req, res) {
+    Task.update({ _id: req.params.id }, { done: true }, { multi: false }, function(err, task) {
+      if (err) {
+        res.send(422);
+      } else {
+        res.send(200);
+      }
+    });
+  },
+
+  Unfinish: function(req, res) {
+    Task.update({ _id: req.params.id }, { done: false }, { multi: false }, function(err, task) {
+      res.send(200);
+    });
+  },
+
+  Destroy: function(req, res) {
+    Task.remove({ _id: req.params.id }, function(err, count) {
+      res.send(200);
     });
   }
-};
-
-module.exports = Tasks;
+}

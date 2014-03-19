@@ -1,12 +1,12 @@
-
-/**
- * Module dependencies.
- */
-
 var express = require('express');
 var routes = require('./routes/config');
 var http = require('http');
 var path = require('path');
+
+// Database Setup
+var mongo = require('mongodb');
+var mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost/tasky');
 
 var app = express();
 
@@ -30,7 +30,12 @@ if ('development' == app.get('env')) {
 
 app.get('/', routes.Root);
 app.post('/task_lists', routes.TaskList.Create)
-app.get('/task_lists/:name/tasks', routes.Tasks.Index)
+app.get('/tasks', routes.Tasks.Index)
+app.post('/tasks', routes.Tasks.Create);
+app.put('/tasks/:id', routes.Tasks.Update);
+app.delete('/tasks/:id', routes.Tasks.Destroy);
+app.put('/tasks/:id/finish', routes.Tasks.Finish);
+app.put('/tasks/:id/unfinish', routes.Tasks.Unfinish);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));

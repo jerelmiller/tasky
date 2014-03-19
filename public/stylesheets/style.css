@@ -72,6 +72,13 @@ h6 {
 .no-margin {
   margin: 0;
 }
+.push-quarter {
+  top: 25%;
+  position: relative;
+}
+.hide {
+  display: none;
+}
 .logo {
   color: #fd6e6e;
   float: left;

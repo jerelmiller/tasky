@@ -8,7 +8,23 @@ block content
     h3 Tasks
     ul.task-list
       each task in tasks
-        li.task
-          .task-action(class= task.done ? 'finished' : '')
-          h5.no-margin.red= task.name
+        li.task(data-task=task.id)
+          .task-action(class= task.finished() ? 'finished' : '')
+          h5.no-margin.red.task-title= task.title
+          input.hide(type='text' name='title' value=task.title)
+          textarea.hide
+            = task.body
+          input.hide(type='submit')
           .task-description= task.body
+          .task-actions
+            i.fui-new.edit-task
+            i.fui-cross.delete-task
+      li.create-task
+        form(action='/tasks' method='post')
+          span Create new task
+          input(type='text' placeholder='Task Name' name='title')
+          textarea(placeholder='Describe your task' name='body')
+          input(type='submit' value='Create Task')
+
+  script
+    | new Tasky.Tasks.Index();
