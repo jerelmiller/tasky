@@ -1,0 +1,26 @@
+.centered-button-container
+  text-align: center
+
+.button
+  padding: 10px 20px
+  background: $red
+  display: inline-block
+  border-radius(3px)
+  transition(all 0.3s)
+  font-weight: 300
+
+  a&
+   color: #FFF
+
+  &.background-less
+    background: none
+    border: 1px solid $red
+    color: $red
+
+  &.large
+    font-size: 1.3em
+    padding: 15px 30px
+
+  &:hover
+    background: $red
+    color: white

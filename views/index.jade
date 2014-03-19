@@ -2,7 +2,9 @@ extends layout
 
 block content
   .container.push-quarter
-    h1.red.center Welcome to Tasky
-    h5 To get started, enter the name of your task list:
-    form(action='/task_lists' method='POST')
-      input(type='text' placeholder='Enter your task list name' name='list_name')
+    h1.main-title.fade.slide.from-bottom.slow Welcome to Tasky
+    .centered-button-container
+      a.button.large.background-less.fade.slow(href='/tasks') Get Started
+
+  script
+    | new Tasky.Index();

@@ -1,0 +1,21 @@
+$transition-duration = 0.5s
+$transition-easing = ease
+
+.slow
+  vendor('transition-duration', 0.8s !important)
+
+.fade
+  opacity: 0
+  transition(opacity $transition-duration $transition-easing)
+
+  &.in
+    opacity: 1
+
+.slide
+  transition(all $transition-duration $transition-easing)
+
+  &.from-bottom
+    transform(translateY(20px))
+
+  &.in
+    transform(translateX(0))
