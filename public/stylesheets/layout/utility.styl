@@ -27,9 +27,27 @@ $vertical-align
 .no-margin
   margin: 0
 
+.no-top-margin
+  margin-top: 0
+
 .push-quarter
   top: 25%
   position: relative;
 
 .hide
   display: none
+
+.margin-bottom-40
+  margin-bottom: 40px
+
+.clearfix
+  &:after
+    content: '.'
+    display: block
+    clear: both
+    visibility: hidden
+    line-height: 0;
+    height: 0;
+
+.right
+  float: right

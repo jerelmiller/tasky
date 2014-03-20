@@ -6,6 +6,21 @@ h5,
 h6 {
   font-weight: 300;
 }
+input[type='text'],
+textarea {
+  width: 100%;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  box-sizing: border-box;
+  outline: 0;
+  border: 1px solid #ccc;
+  margin: 0;
+  padding: 15px;
+  font-size: 1em;
+  font-weight: 300;
+}
 html,
 body {
   font: 16px Lato, Helvetica;
@@ -17,12 +32,8 @@ body {
 a {
   text-decoration: none;
 }
-input[type='text'] {
-  padding: 15px;
-  font-size: 1em;
-  border: 1px solid #ccc;
-  outline: 0;
-  width: 100%;
+textarea {
+  min-height: 100px;
 }
 h1 {
   font-size: 3.5em;
@@ -72,6 +83,9 @@ h6 {
 .no-margin {
   margin: 0;
 }
+.no-top-margin {
+  margin-top: 0;
+}
 .push-quarter {
   top: 25%;
   position: relative;
@@ -79,12 +93,37 @@ h6 {
 .hide {
   display: none;
 }
+.margin-bottom-40 {
+  margin-bottom: 40px;
+}
+.clearfix:after {
+  content: '.';
+  display: block;
+  clear: both;
+  visibility: hidden;
+  line-height: 0;
+  height: 0;
+}
+.right {
+  float: right;
+}
 .slow {
   -webkit-transition-duration: 0.8s !important;
   -moz-transition-duration: 0.8s !important;
   -ms-transition-duration: 0.8s !important;
   -o-transition-duration: 0.8s !important;
   transition-duration: 0.8s !important;
+}
+.grow {
+  -webkit-transition: max-height 0.5s ease;
+  -moz-transition: max-height 0.5s ease;
+  -ms-transition: max-height 0.5s ease;
+  -o-transition: max-height 0.5s ease;
+  transition: max-height 0.5s ease;
+  max-height: 0;
+}
+.grow.in {
+  max-height: 500px;
 }
 .fade {
   opacity: 0;
@@ -111,31 +150,39 @@ h6 {
   -o-transform: translateY(10px);
   transform: translateY(10px);
 }
+.slide.from-right {
+  -webkit-transform: translateX(10px);
+  -moz-transform: translateX(10px);
+  -ms-transform: translateX(10px);
+  -o-transform: translateX(10px);
+  transform: translateX(10px);
+}
 .slide.in {
-  -webkit-transform: translateX(0);
-  -moz-transform: translateX(0);
-  -ms-transform: translateX(0);
-  -o-transform: translateX(0);
-  transform: translateX(0);
+  -webkit-transform: translateX(0) !important;
+  -moz-transform: translateX(0) !important;
+  -ms-transform: translateX(0) !important;
+  -o-transform: translateX(0) !important;
+  transform: translateX(0) !important;
+}
+.delay-animation {
+  -webkit-transition-delay: 0.5s !important;
+  -moz-transition-delay: 0.5s !important;
+  -ms-transition-delay: 0.5s !important;
+  -o-transition-delay: 0.5s !important;
+  transition-delay: 0.5s !important;
 }
 .logo {
   color: #fd6e6e;
-  float: left;
-  font-size: 2em;
-  position: absolute;
-  top: 0;
-  left: 0;
+  display: block;
+  text-align: center;
+  font-size: 3.3em;
   font-weight: 300;
 }
 .main-header {
-  background: #424756;
-  color: #fff;
-  padding: 40px 0;
+  padding: 30px 0;
 }
-.centered-button-container {
-  text-align: center;
-}
-.button {
+.button,
+button {
   padding: 10px 20px;
   background: #fd6e6e;
   display: inline-block;
@@ -144,28 +191,48 @@ h6 {
   -ms-border-radius: 3px;
   -o-border-radius: 3px;
   border-radius: 3px;
-  -webkit-transition: all 0.3s;
-  -moz-transition: all 0.3s;
-  -ms-transition: all 0.3s;
-  -o-transition: all 0.3s;
-  transition: all 0.3s;
+  -webkit-transition: all 0.2s ease;
+  -moz-transition: all 0.2s ease;
+  -ms-transition: all 0.2s ease;
+  -o-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+  font-size: 1em;
   font-weight: 300;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  box-sizing: border-box;
 }
-a.button {
-  color: #fff;
+.button.large,
+button.large {
+  font-size: 1.3em;
+  padding: 15px 30px;
 }
-.button.background-less {
+.button.background-less,
+button.background-less {
   background: none;
   border: 1px solid #fd6e6e;
   color: #fd6e6e;
 }
-.button.large {
-  font-size: 1.3em;
-  padding: 15px 30px;
-}
-.button:hover {
+.button.background-less:hover,
+button.background-less:hover {
   background: #fd6e6e;
   color: #fff;
+}
+.centered-button-container {
+  text-align: center;
+}
+a.button {
+  color: #fff;
+}
+button {
+  font-family: Lato, Helvetica;
+  margin: 0;
+  cursor: pointer;
+}
+button:focus {
+  outline: 0;
 }
 .main-title {
   color: #fd6e6e;
@@ -200,7 +267,6 @@ a.button {
   bottom: 0;
   position: absolute;
   color: #fff;
-  padding: 0 10px;
   cursor: pointer;
   border-right: 1px solid #d6d9e0;
   -webkit-box-sizing: border-box;
@@ -217,6 +283,10 @@ a.button {
   -ms-transform: translateY(-50%);
   -o-transform: translateY(-50%);
   transform: translateY(-50%);
+  font-size: 2em;
+  width: 100%;
+  text-align: center;
+  font-family: 'Flat-UI-Icons';
 }
 .task-action [class*="fui-"] {
   font-size: 2.8em;
@@ -225,24 +295,59 @@ a.button {
   background: #3ecd8e;
 }
 .task-action:hover:after {
-  font-family: 'Flat-UI-Icons';
-  font-size: 2.8em;
   content: "\e00a";
 }
 .task-action.finished {
   background: #3ecd8e;
 }
 .task-action.finished:after {
-  font-family: 'Flat-UI-Icons';
-  font-size: 2.8em;
   content: "\e00a";
 }
 .task-action.finished:hover {
   background: #fd6e6e;
 }
 .task-action.finished:hover:after {
-  font-family: 'Flat-UI-Icons';
-  font-size: 2.8em;
   content: "\e00b";
-  margin-left: 3px;
+}
+.create-task {
+  overflow-x: hidden;
+  max-height: 100px;
+}
+.create-task.in {
+  margin-bottom: 20px;
+}
+.create-task .add-task {
+  font-size: 1.9em;
+  padding: 20px;
+  background: #3ecd8e;
+  color: #fff;
+  float: left;
+  position: relative;
+  z-index: 999;
+  cursor: pointer;
+}
+.create-task .add-task + input {
+  font-size: 1.25em;
+  width: 650px;
+  padding: 24px 15px;
+  border-left: 0;
+  -webkit-transform: translateX(-100%);
+  -moz-transform: translateX(-100%);
+  -ms-transform: translateX(-100%);
+  -o-transform: translateX(-100%);
+  transform: translateX(-100%);
+}
+.create-task .textarea-container {
+  overflow-y: hidden;
+}
+.create-task textarea {
+  border-top: 0;
+  -webkit-transform: translateY(-100%);
+  -moz-transform: translateY(-100%);
+  -ms-transform: translateY(-100%);
+  -o-transform: translateY(-100%);
+  transform: translateY(-100%);
+}
+.create-task button {
+  margin-top: 20px;
 }

@@ -21,7 +21,6 @@ $task-action-size = 70px
   bottom: 0
   position: absolute
   color: white;
-  padding: 0 10px
   cursor: pointer
   border-right: 1px solid lighten($gray, 80%)
   box-sizing()
@@ -30,6 +29,10 @@ $task-action-size = 70px
     position: absolute;
     top: 50%;
     transform translateY(-50%)
+    font-size: 2em
+    width: 100%
+    text-align: center
+    font-family: 'Flat-UI-Icons'
 
   [class*="fui-"]
     font-size: 2.8em
@@ -37,21 +40,48 @@ $task-action-size = 70px
   &:hover
     background: $teal
     &:after
-      font-family: 'Flat-UI-Icons'
-      font-size: 2.8em
       content: "\e00a"
 
   &.finished
     background: $teal
     &:after
-      font-family: 'Flat-UI-Icons'
-      font-size: 2.8em
       content: "\e00a"
 
     &:hover
       background: $red
       &:after
-        font-family: 'Flat-UI-Icons'
-        font-size: 2.8em
         content: "\e00b"
-        margin-left: 3px
+
+.create-task
+  overflow-x: hidden
+  max-height: 100px
+
+  &.in
+    margin-bottom: 20px
+
+  .add-task
+    font-size: 1.9em
+    padding: 20px
+    background: $teal
+    color: #FFF
+    float: left
+    position: relative
+    z-index: 999
+    cursor: pointer
+
+    + input
+      font-size: 1.25em
+      width: 650px
+      padding: 24px 15px
+      border-left: 0
+      transform(translateX(-100%))
+
+  .textarea-container
+    overflow-y: hidden
+
+  textarea
+    border-top: 0
+    transform(translateY(-100%))
+
+  button
+    margin-top: 20px

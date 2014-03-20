@@ -1,9 +1,14 @@
 extends ../layout
 
 block content
-  .container.small
-    h3 Tasks
+  .container.small.margin-bottom-40
     ul.task-list
+      li.create-task.clearfix.grow
+        i.fui-plus.add-task
+        input.fade.slide(type='text' placeholder='Task Name (required)' name='title')
+        .textarea-container
+          textarea.fade.slide(placeholder='Describe your task' name='body')
+        button.create-task-button.background-less.fade.slow Create Task
       each task in tasks
         li.task(data-task=task.id)
           .task-action(class= task.finished() ? 'finished' : '')
@@ -16,11 +21,7 @@ block content
           .task-actions
             i.fui-new.edit-task
             i.fui-cross.delete-task
-      li.create-task
-        span Create new task
-        input(type='text' placeholder='Task Name' name='title')
-        textarea(placeholder='Describe your task' name='body')
-        input(type='submit' value='Create Task')
+
 
   script
     | new Tasky.Tasks.Index();

@@ -1,26 +1,39 @@
-.centered-button-container
-  text-align: center
-
-.button
+$base-button
   padding: 10px 20px
   background: $red
   display: inline-block
   border-radius(3px)
-  transition(all 0.3s)
+  transition(all 0.2s ease)
+  font-size: 1em
   font-weight: 300
+  box-sizing()
 
-  a&
-   color: #FFF
+  &.large
+    font-size: 1.3em
+    padding: 15px 30px
 
   &.background-less
     background: none
     border: 1px solid $red
     color: $red
 
-  &.large
-    font-size: 1.3em
-    padding: 15px 30px
+    &:hover
+      background: $red
+      color: white
 
-  &:hover
-    background: $red
-    color: white
+.centered-button-container
+  text-align: center
+
+.button
+  @extends $base-button
+
+  a&
+   color: #FFF
+
+button
+  @extends $base-button
+  font-family: $app-font-family
+  margin: 0
+  cursor: pointer
+  &:focus
+    outline: 0

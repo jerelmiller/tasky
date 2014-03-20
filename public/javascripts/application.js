@@ -42,7 +42,15 @@ Tasky.Tasks.Index = function() {
   $('.task').find('input[type="submit"]').each(this.updateTask);
 
   $createTask = $('.create-task');
-  $createTask.find('input[type="submit"]').click(function() {
+  $createTask.find('.add-task').click(function() {
+    $createTask.find('input, textarea').addClass('in');
+    $createTask.addClass('in')
+    setTimeout(function() {
+      $createTask.find('button').addClass('in');
+    }, 800);
+  });
+
+  $createTask.find('.create-task-button').click(function() {
 
     var title = $createTask.find('input[type="text"]').val();
     var description = $createTask.find('textarea').val()
@@ -54,13 +62,19 @@ Tasky.Tasks.Index = function() {
         body: description
       },
       success: function(data) {
-        $('.create-task').before(taskHtml(data));
+        $('.create-task').after(taskHtml(data));
         $('.delete-task').each(that.bindDeleteTask);
         $('.task').find('input[type="submit"]').each(that.updateTask);
         $('.task-action').each(that.bindTaskAction);
         $('.edit-task').each(that.bindEditTask);
-        $createTask.find('input[type="text"]').val('');
-        $createTask.find('textarea').val('');
+        $createTask.removeClass('in')
+        $createTask.find('input[type="text"]').removeClass('in')
+        $createTask.find('textarea').removeClass('in');
+        $createTask.find('button').removeClass('in');
+
+        setTimeout(function() {
+          $createTask.find('input, textarea').val('');
+        }, 1000);
       },
       error: function(xhr) {
         var serverErrors = xhr.responseJSON.errors;
