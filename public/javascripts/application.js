@@ -40,6 +40,9 @@ Tasky.Tasks.Index = function() {
   $('.edit-task').each(this.bindEditTask);
   $('.delete-task').each(this.bindDeleteTask);
   $('.task').find('input[type="submit"]').each(this.updateTask);
+  if (!$('.task').length > 0) {
+    $('.no-tasks').addClass('in');
+  }
 
   $createTask = $('.create-task');
   $createTask.find('.add-task').click(function() {
@@ -62,6 +65,7 @@ Tasky.Tasks.Index = function() {
         body: description
       },
       success: function(data) {
+        $('.no-tasks').removeClass('in');
         $('.create-task').after(taskHtml(data));
         setTimeout(function() {
           $('.task').first().addClass('in');
@@ -105,6 +109,9 @@ Tasky.Tasks.Index.prototype.bindDeleteTask = function() {
         $task.removeClass('in');
         setTimeout(function() {
           $task.remove();
+          if (!$('.task').length > 0) {
+            $('.no-tasks').addClass('in');
+          }
         }, 500);
       }
     });

@@ -379,3 +379,10 @@ button:focus {
 .create-task button {
   margin: 20px 0;
 }
+.no-tasks {
+  font-size: 2.3em;
+  color: #ccc;
+  font-weight: 300;
+  margin-top: 20px;
+  text-align: center;
+}
