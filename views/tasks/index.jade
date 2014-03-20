@@ -17,11 +17,10 @@ block content
             i.fui-new.edit-task
             i.fui-cross.delete-task
       li.create-task
-        form(action='/tasks' method='post')
-          span Create new task
-          input(type='text' placeholder='Task Name' name='title')
-          textarea(placeholder='Describe your task' name='body')
-          input(type='submit' value='Create Task')
+        span Create new task
+        input(type='text' placeholder='Task Name' name='title')
+        textarea(placeholder='Describe your task' name='body')
+        input(type='submit' value='Create Task')
 
   script
     | new Tasky.Tasks.Index();

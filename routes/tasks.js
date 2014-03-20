@@ -11,7 +11,11 @@ module.exports = {
 
   Create: function(req, res) {
     new Task(req.body).save(function(err, task) {
-      res.redirect('/tasks');
+      if (err) {
+        res.json(400, { errors: err.errors });
+      } else {
+        res.json(task);
+      }
     });
   },
 
@@ -23,11 +27,7 @@ module.exports = {
 
   Finish: function(req, res) {
     Task.update({ _id: req.params.id }, { done: true }, { multi: false }, function(err, task) {
-      if (err) {
-        res.send(422);
-      } else {
-        res.send(200);
-      }
+      res.send(200);
     });
   },
 
