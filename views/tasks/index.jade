@@ -5,15 +5,15 @@ block content
     ul.task-list
       li.create-task.clearfix.grow
         i.fui-plus.add-task
-        input.fade.slide(type='text' placeholder='Task Name (required)' name='title')
+        input.fade.slide(type='text' placeholder='Task Name (required)' name='title' maxlength=70)
         .textarea-container
-          textarea.fade.slide(placeholder='Describe your task' name='body')
+          textarea.fade.slide(placeholder='Describe your task' name='body' maxlength=270)
         button.create-task-button.background-less.fade.slow Create Task
       each task in tasks
         li.task.slide.grow.transition-all.in(data-task=task.id)
           .task-action(class= task.finished() ? 'finished' : '')
           h5.no-margin.red.task-title= task.title
-          input.hide(type='text' name='title' value=task.title)
+          input.hide(type='text' name='title' value=task.title maxlength=70)
           textarea.hide
             = task.body
           input.hide(type='submit')

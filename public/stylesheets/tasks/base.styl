@@ -1,9 +1,10 @@
 $task-action-size = 70px
+$task-standard-padding = 15px 60px 15px $task-action-size + 20px
 
 .task
   margin-bottom: 20px
   border: 1px solid lighten($gray, 80%)
-  padding: 20px 20px 20px $task-action-size + 20px
+  padding: $task-standard-padding
   position: relative
   overflow: hidden
   &:first-child
@@ -15,7 +16,7 @@ $task-action-size = 70px
     border: 0
 
     &.in
-      padding: 20px 20px 20px $task-action-size + 20px
+      padding: $task-standard-padding
       max-height: 82px
       margin-bottom: 20px
       border: 1px solid lighten($gray, 80%)
@@ -76,7 +77,7 @@ $task-action-size = 70px
         content: "\e00b"
 
 .create-task
-  overflow-x: hidden
+  overflow: hidden
   max-height: 95px !important
 
   &.in
