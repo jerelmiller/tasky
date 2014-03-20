@@ -27,8 +27,8 @@ function taskHtml(task) {
     '<input class="hide" type="submit">' +
     '<div class="task-description">' + task.body + '</div>' +
     '<div class="task-actions">' +
-      '<i class="fui-new edit-task">' +
-      '<i class="fui-cross delete-task">' +
+      '<i class="fui-new edit-task"></i>' +
+      '<i class="fui-cross delete-task"></i>' +
     '</div>' +
   '</li>';
 };
@@ -47,13 +47,13 @@ Tasky.Tasks.Index = function() {
     $createTask.addClass('in')
     setTimeout(function() {
       $createTask.find('button').addClass('in');
-    }, 800);
+    }, 500);
   });
 
   $createTask.find('.create-task-button').click(function() {
 
     var title = $createTask.find('input[type="text"]').val();
-    var description = $createTask.find('textarea').val()
+    var description = $createTask.find('textarea').val();
 
     $.ajax('/tasks', {
       type: 'POST',
@@ -67,10 +67,10 @@ Tasky.Tasks.Index = function() {
         $('.task').find('input[type="submit"]').each(that.updateTask);
         $('.task-action').each(that.bindTaskAction);
         $('.edit-task').each(that.bindEditTask);
-        $createTask.removeClass('in')
         $createTask.find('input[type="text"]').removeClass('in')
         $createTask.find('textarea').removeClass('in');
         $createTask.find('button').removeClass('in');
+        $createTask.removeClass('in');
 
         setTimeout(function() {
           $createTask.find('input, textarea').val('');

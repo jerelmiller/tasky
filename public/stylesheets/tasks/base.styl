@@ -13,6 +13,14 @@ $task-action-size = 70px
   font-weight: 300
   font-style: italic
 
+.task-actions
+  position: absolute
+  top: 5px
+  right: 10px
+
+  i
+    cursor: pointer
+
 .task-action
   width: $task-action-size
   position: absolute
@@ -54,10 +62,10 @@ $task-action-size = 70px
 
 .create-task
   overflow-x: hidden
-  max-height: 100px
+  max-height: 95px !important
 
   &.in
-    margin-bottom: 20px
+    max-height: 257px !important
 
   .add-task
     font-size: 1.9em
@@ -84,4 +92,4 @@ $task-action-size = 70px
     transform(translateY(-100%))
 
   button
-    margin-top: 20px
+    margin: 20px 0

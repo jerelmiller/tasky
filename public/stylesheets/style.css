@@ -53,6 +53,9 @@ h5 {
 h6 {
   font-size: 0.8em;
 }
+i + i {
+  margin-left: 10px;
+}
 .vertically-center {
   position: relative;
   top: 50%;
@@ -115,15 +118,12 @@ h6 {
   transition-duration: 0.8s !important;
 }
 .grow {
-  -webkit-transition: max-height 0.5s ease;
-  -moz-transition: max-height 0.5s ease;
-  -ms-transition: max-height 0.5s ease;
-  -o-transition: max-height 0.5s ease;
-  transition: max-height 0.5s ease;
+  -webkit-transition: max-height 0.5s ease-out;
+  -moz-transition: max-height 0.5s ease-out;
+  -ms-transition: max-height 0.5s ease-out;
+  -o-transition: max-height 0.5s ease-out;
+  transition: max-height 0.5s ease-out;
   max-height: 0;
-}
-.grow.in {
-  max-height: 500px;
 }
 .fade {
   opacity: 0;
@@ -163,13 +163,6 @@ h6 {
   -ms-transform: translateX(0) !important;
   -o-transform: translateX(0) !important;
   transform: translateX(0) !important;
-}
-.delay-animation {
-  -webkit-transition-delay: 0.5s !important;
-  -moz-transition-delay: 0.5s !important;
-  -ms-transition-delay: 0.5s !important;
-  -o-transition-delay: 0.5s !important;
-  transition-delay: 0.5s !important;
 }
 .logo {
   color: #fd6e6e;
@@ -259,6 +252,14 @@ button:focus {
   font-weight: 300;
   font-style: italic;
 }
+.task-actions {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+}
+.task-actions i {
+  cursor: pointer;
+}
 .task-action {
   width: 70px;
   position: absolute;
@@ -311,10 +312,10 @@ button:focus {
 }
 .create-task {
   overflow-x: hidden;
-  max-height: 100px;
+  max-height: 95px !important;
 }
 .create-task.in {
-  margin-bottom: 20px;
+  max-height: 257px !important;
 }
 .create-task .add-task {
   font-size: 1.9em;
@@ -349,5 +350,5 @@ button:focus {
   transform: translateY(-100%);
 }
 .create-task button {
-  margin-top: 20px;
+  margin: 20px 0;
 }
