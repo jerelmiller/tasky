@@ -110,6 +110,9 @@ i + i {
 .right {
   float: right;
 }
+.full-width {
+  width: 100%;
+}
 .slow {
   -webkit-transition-duration: 0.8s !important;
   -moz-transition-duration: 0.8s !important;
@@ -253,6 +256,11 @@ button:focus {
   position: relative;
   overflow: hidden;
 }
+.task input,
+.task textarea,
+.task button {
+  display: none;
+}
 .task:first-child {
   margin-top: 20px;
 }
@@ -274,6 +282,30 @@ button:focus {
   -o-transform: translateX(-100%);
   transform: translateX(-100%);
 }
+.task.edit-mode {
+  max-height: 192px !important;
+  padding: 0 0 0 70px !important;
+}
+.task.edit-mode input,
+.task.edit-mode textarea,
+.task.edit-mode button {
+  display: inherit;
+}
+.task.edit-mode input,
+.task.edit-mode textarea {
+  border: none;
+  border-bottom: 1px solid #ccc;
+}
+.task.edit-mode button {
+  margin-top: -3px;
+}
+.task.edit-mode .task-actions {
+  opacity: 0;
+}
+.task.edit-mode .task-title,
+.task.edit-mode .task-description {
+  display: none;
+}
 .task-description {
   font-size: 0.9em;
   font-weight: 300;
@@ -283,6 +315,12 @@ button:focus {
   position: absolute;
   top: 5px;
   right: 10px;
+  opacity: 1;
+  -webkit-transition: opacity 0.5s;
+  -moz-transition: opacity 0.5s;
+  -ms-transition: opacity 0.5s;
+  -o-transition: opacity 0.5s;
+  transition: opacity 0.5s;
 }
 .task-actions i {
   cursor: pointer;

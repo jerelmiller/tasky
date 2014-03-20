@@ -7,6 +7,10 @@ $task-standard-padding = 15px 60px 15px $task-action-size + 20px
   padding: $task-standard-padding
   position: relative
   overflow: hidden
+
+  input, textarea, button
+    display: none
+
   &:first-child
     margin-top: 20px
 
@@ -24,6 +28,26 @@ $task-standard-padding = 15px 60px 15px $task-action-size + 20px
   &.slide
     transform(translateX(-100%))
 
+  &.edit-mode
+    max-height: 192px !important
+    padding: 0 0 0 $task-action-size !important
+
+    input, textarea, button
+      display: inherit
+
+    input, textarea
+      border: none
+      border-bottom: 1px solid #CCC
+
+    button
+      margin-top: -3px
+
+    .task-actions
+      opacity: 0
+
+    .task-title, .task-description
+      display: none
+
 .task-description
   font-size: 0.9em
   font-weight: 300
@@ -33,6 +57,8 @@ $task-standard-padding = 15px 60px 15px $task-action-size + 20px
   position: absolute
   top: 5px
   right: 10px
+  opacity: 1
+  transition(opacity 0.5s)
 
   i
     cursor: pointer
@@ -109,7 +135,6 @@ $task-standard-padding = 15px 60px 15px $task-action-size + 20px
 
   button
     margin: 20px 0
-
 
 .no-tasks
   font-size: 2.3em

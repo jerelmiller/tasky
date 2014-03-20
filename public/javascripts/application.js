@@ -22,9 +22,9 @@ function taskHtml(task) {
   return '<li class="task grow transition-all slide" data-task="' + task._id + '">' +
     '<div class="task-action"></div>' +
     '<h5 class="no-margin red task-title">' + task.title + '</h5>' +
-    '<input class="hide" type="text" name="title" value="' + task.title + '">' +
-    '<textarea class="hide">' + task.body + '</textarea>' +
-    '<input class="hide" type="submit">' +
+    '<input type="text" maxlength="70" name="title" value="' + task.title + '">' +
+    '<textarea maxlength="270">' + task.body + '</textarea>' +
+    '<button class="update-task background-less full-width">' + 'Update Task' + '</button>' +
     '<div class="task-description">' + task.body + '</div>' +
     '<div class="task-actions">' +
       '<i class="fui-new edit-task"></i>' +
@@ -39,7 +39,7 @@ Tasky.Tasks.Index = function() {
   $('.task-action').each(this.bindTaskAction);
   $('.edit-task').each(this.bindEditTask);
   $('.delete-task').each(this.bindDeleteTask);
-  $('.task').find('input[type="submit"]').each(this.updateTask);
+  $('.task').find('.update-task').each(this.updateTask);
   if (!$('.task').length > 0) {
     $('.no-tasks').addClass('in');
   }
@@ -74,6 +74,7 @@ Tasky.Tasks.Index = function() {
         $('.task').find('input[type="submit"]').each(that.updateTask);
         $('.task-action').each(that.bindTaskAction);
         $('.edit-task').each(that.bindEditTask);
+        $('.task').find('.update-task').each(that.updateTask);
         $createTask.find('input[type="text"]').removeClass('in')
         $createTask.find('textarea').removeClass('in');
         $createTask.find('button').removeClass('in');
@@ -165,27 +166,23 @@ Tasky.Tasks.Index.prototype.updateTask = function() {
       success: function() {
         $taskTitle.text(newTitle);
         $taskDescription.text(newDescription);
-        $input.hide();
-        $textarea.hide();
-        $taskTitle.show();
-        $taskDescription.show();
+        $task.removeClass('edit-mode');
+        setTimeout(function() {
+          $task.addClass('transition-all slide')
+        }, 500);
       }
     });
   });
 }
 
 Tasky.Tasks.Index.prototype.bindEditTask = function() {
-  var $this, $task, $taskTitle, $taskDescription, $hidden, $submit;
+  var $this, $task;
 
   $this = $(this);
   $task = $this.parents('.task');
-  $taskTitle = $task.find('.task-title');
-  $taskDescription = $task.find('.task-description');
-  $hidden = $task.find('.hide');
 
   $this.click(function() {
-    $taskTitle.hide();
-    $taskDescription.hide();
-    $hidden.show();
+    $task.removeClass('transition-all slide')
+    $task.addClass('edit-mode');
   });
 }

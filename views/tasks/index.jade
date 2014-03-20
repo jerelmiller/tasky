@@ -13,10 +13,9 @@ block content
         li.task.slide.grow.transition-all.in(data-task=task.id)
           .task-action(class= task.finished() ? 'finished' : '')
           h5.no-margin.red.task-title= task.title
-          input.hide(type='text' name='title' value=task.title maxlength=70)
-          textarea.hide
-            = task.body
-          input.hide(type='submit')
+          input(type='text' name='title' value=task.title maxlength=70)
+          textarea(maxlength=70)= task.body
+          button.update-task.background-less.full-width Update Task
           .task-description= task.body
           .task-actions
             i.fui-new.edit-task
