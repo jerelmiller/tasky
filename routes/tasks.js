@@ -2,7 +2,7 @@ var Task = require('../models/task');
 
 module.exports = {
   Index: function(req, res) {
-    Task.find({}, function(err, tasks) {
+    Task.find({}).sort('-_id').exec(function(err, tasks) {
       res.render('tasks/index', {
         tasks: tasks || []
       });
