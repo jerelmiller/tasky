@@ -117,12 +117,19 @@ i + i {
   -o-transition-duration: 0.8s !important;
   transition-duration: 0.8s !important;
 }
+.transition-all {
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -ms-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
 .grow {
-  -webkit-transition: max-height 0.5s ease-out;
-  -moz-transition: max-height 0.5s ease-out;
-  -ms-transition: max-height 0.5s ease-out;
-  -o-transition: max-height 0.5s ease-out;
-  transition: max-height 0.5s ease-out;
+  -webkit-transition: max-height 0.5s ease;
+  -moz-transition: max-height 0.5s ease;
+  -ms-transition: max-height 0.5s ease;
+  -o-transition: max-height 0.5s ease;
+  transition: max-height 0.5s ease;
   max-height: 0;
 }
 .fade {
@@ -158,11 +165,11 @@ i + i {
   transform: translateX(10px);
 }
 .slide.in {
-  -webkit-transform: translateX(0) !important;
-  -moz-transform: translateX(0) !important;
-  -ms-transform: translateX(0) !important;
-  -o-transform: translateX(0) !important;
-  transform: translateX(0) !important;
+  -webkit-transform: translate(0) !important;
+  -moz-transform: translate(0) !important;
+  -ms-transform: translate(0) !important;
+  -o-transform: translate(0) !important;
+  transform: translate(0) !important;
 }
 .logo {
   color: #fd6e6e;
@@ -234,6 +241,7 @@ button:focus {
 .task-list {
   margin: 0;
   padding: 0;
+  overflow: hidden;
 }
 .task-list li {
   list-style: none;
@@ -243,9 +251,28 @@ button:focus {
   border: 1px solid #d6d9e0;
   padding: 20px 20px 20px 90px;
   position: relative;
+  overflow: hidden;
 }
 .task:first-child {
   margin-top: 20px;
+}
+.task.grow {
+  padding: 0 20px 0 90px;
+  margin-bottom: 0;
+  border: 0;
+}
+.task.grow.in {
+  padding: 20px 20px 20px 90px;
+  max-height: 82px;
+  margin-bottom: 20px;
+  border: 1px solid #d6d9e0;
+}
+.task.slide {
+  -webkit-transform: translateX(-100%);
+  -moz-transform: translateX(-100%);
+  -ms-transform: translateX(-100%);
+  -o-transform: translateX(-100%);
+  transform: translateX(-100%);
 }
 .task-description {
   font-size: 0.9em;

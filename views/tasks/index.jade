@@ -10,7 +10,7 @@ block content
           textarea.fade.slide(placeholder='Describe your task' name='body')
         button.create-task-button.background-less.fade.slow Create Task
       each task in tasks
-        li.task(data-task=task.id)
+        li.task.slide.grow.transition-all.in(data-task=task.id)
           .task-action(class= task.finished() ? 'finished' : '')
           h5.no-margin.red.task-title= task.title
           input.hide(type='text' name='title' value=task.title)

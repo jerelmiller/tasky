@@ -4,9 +4,24 @@ $task-action-size = 70px
   margin-bottom: 20px
   border: 1px solid lighten($gray, 80%)
   padding: 20px 20px 20px $task-action-size + 20px
-  position: relative;
+  position: relative
+  overflow: hidden
   &:first-child
     margin-top: 20px
+
+  &.grow
+    padding: 0 20px 0 $task-action-size + 20px
+    margin-bottom: 0
+    border: 0
+
+    &.in
+      padding: 20px 20px 20px $task-action-size + 20px
+      max-height: 82px
+      margin-bottom: 20px
+      border: 1px solid lighten($gray, 80%)
+
+  &.slide
+    transform(translateX(-100%))
 
 .task-description
   font-size: 0.9em

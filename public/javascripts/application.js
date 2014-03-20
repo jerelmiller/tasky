@@ -19,7 +19,7 @@ function getId(target) {
 };
 
 function taskHtml(task) {
-  return '<li class="task" data-task="' + task._id + '">' +
+  return '<li class="task grow transition-all slide" data-task="' + task._id + '">' +
     '<div class="task-action"></div>' +
     '<h5 class="no-margin red task-title">' + task.title + '</h5>' +
     '<input class="hide" type="text" name="title" value="' + task.title + '">' +
@@ -63,6 +63,9 @@ Tasky.Tasks.Index = function() {
       },
       success: function(data) {
         $('.create-task').after(taskHtml(data));
+        setTimeout(function() {
+          $('.task').first().addClass('in');
+        });
         $('.delete-task').each(that.bindDeleteTask);
         $('.task').find('input[type="submit"]').each(that.updateTask);
         $('.task-action').each(that.bindTaskAction);
@@ -99,7 +102,10 @@ Tasky.Tasks.Index.prototype.bindDeleteTask = function() {
     $.ajax('/tasks/' + id, {
       type: 'DELETE',
       success: function() {
-        $task.remove();
+        $task.removeClass('in');
+        setTimeout(function() {
+          $task.remove();
+        }, 500);
       }
     });
   });

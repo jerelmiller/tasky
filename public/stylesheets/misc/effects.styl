@@ -4,8 +4,11 @@ $transition-easing = ease
 .slow
   vendor('transition-duration', 0.8s !important)
 
+.transition-all
+  transition(all $transition-duration $transition-easing)
+
 .grow
-  transition(max-height $transition-duration ease-out)
+  transition(max-height $transition-duration $transition-easing)
   max-height: 0
 
 .fade
@@ -25,4 +28,4 @@ $transition-easing = ease
     transform(translateX(10px))
 
   &.in
-    transform(translateX(0) !important)
+    transform(translate(0) !important)
