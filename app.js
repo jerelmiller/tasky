@@ -8,7 +8,8 @@ var routes = require('./routes/config');
 // Database Setup
 var mongo = require('mongodb');
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/tasky');
+var databaseURI = process.env.MONGOLAB_URI || process.env.MONGOHQ_URL || 'mongodb://localhost/tasky';
+mongoose.connect(databaseURI);
 
 var app = express();
 
