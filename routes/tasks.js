@@ -47,7 +47,7 @@ module.exports = {
       Task.findById(req.params.id, function(err, task) {
         twilio.sendMessage({
           to: '+1' + phoneNumber.number,
-          from: constants.twilio.from,
+          from: api.twilio.from,
           body: '"' + task.title + '" task has been marked as done'
         }, function(err, responseData) {
           if (err) {
