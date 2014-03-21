@@ -1,6 +1,8 @@
 $base-button
   padding: 10px 20px
-  background: $red
+  border: 1px solid $red
+  background: none
+  color: $red
   display: inline-block
   border-radius(3px)
   transition(all 0.2s ease)
@@ -12,31 +14,23 @@ $base-button
     font-size: 1.3em
     padding: 15px 30px
 
-  &.background-less
-    background: none
-    border: 1px solid $red
-    color: $red
+  &:hover
+    background: $red
+    color: white
+
+  &.green
+    border: 1px solid $teal
+    color: $teal
 
     &:hover
-      background: $red
+      background: $teal
       color: white
-
-    &.green
-      border: 1px solid $teal
-      color: $teal
-
-      &:hover
-        background: $teal
-        color: white
 
 .centered-button-container
   text-align: center
 
 .button
   @extends $base-button
-
-  a&
-   color: #FFF
 
 button
   @extends $base-button
