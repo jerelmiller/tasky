@@ -1,11 +1,10 @@
 var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
-var ObjectId = Schema.Types.ObjectId;
 
-var TaskSchema = new Schema({
+var TaskSchema = new mongoose.Schema({
   title: {
     type: String,
-    default: ''
+    default: '',
+    required: true
   },
   body: {
     type: String,
@@ -22,6 +21,5 @@ TaskSchema.methods.finished = function() {
 }
 
 var Task = mongoose.model('Task', TaskSchema);
-Task.schema.path('title').validate(function(value) { return String(value).length > 0; }, 'Title must not be blank');
 
 module.exports = Task

@@ -1,4 +1,5 @@
 var Task = require('../models/task');
+var PhoneNumber = require('../models/phone_number');
 var constants = require('../lib/constants');
 var twilio = require('twilio')(constants.twilio.accountSid, constants.twilio.authToken);
 
@@ -17,7 +18,7 @@ module.exports = {
   Create: function(req, res) {
     new Task(req.body).save(function(err, task) {
       if (err) {
-        res.json(400, { errors: err.errors });
+        res.json(400, err);
       } else {
         res.json(task);
       }
@@ -31,17 +32,19 @@ module.exports = {
   },
 
   Finish: function(req, res) {
-    Task.findById(req.params.id, function(err, task) {
-      twilio.sendMessage({
-        to: '+19703967316',
-        from: constants.twilio.from,
-        body: '"' + task.title + '" task has been marked as done'
-      }, function(err, responseData) {
-        if (err) {
-          console.log(err);
-        }
+    PhoneNumber.findOne({}).sort('-_id').exec(function(err, phoneNumber) {
+      Task.findById(req.params.id, function(err, task) {
+        twilio.sendMessage({
+          to: '+1' + phoneNumber.number,
+          from: constants.twilio.from,
+          body: '"' + task.title + '" task has been marked as done'
+        }, function(err, responseData) {
+          if (err) {
+            console.log(err);
+          }
+        });
       });
-    });
+    })
 
     Task.update({ _id: req.params.id }, { done: true }, { multi: false }, function(err, task) {
       res.send(200);

@@ -1,0 +1,13 @@
+extends ../layout
+
+block content
+  .push-quarter
+    h1.main-title.fade.slide.from-bottom.slow.no-top-margin.in To get started, add your phone number
+    .container
+      form(action='/phone_numbers' method='post')
+        input.large.phone-number-input(type='text' name='number' placeholder='Your Phone Number')
+        button.background-less.large Add Phone Number
+        //- em * We will notify you when your tasks are complete
+
+  //- script
+  //-   | new Tasky.Index();

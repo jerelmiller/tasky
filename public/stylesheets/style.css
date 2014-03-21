@@ -32,6 +32,9 @@ body {
 a {
   text-decoration: none;
 }
+input[type='text'].large {
+  padding: 18.5px 15px;
+}
 textarea {
   min-height: 100px;
 }
@@ -446,4 +449,9 @@ button:focus {
   top: 13px;
   color: #424756;
   font-size: 1.2em;
+}
+.phone-number-input {
+  float: left;
+  width: 474px !important;
+  margin-right: 10px !important;
 }

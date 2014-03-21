@@ -35,6 +35,8 @@ app.put('/tasks/:id', routes.Tasks.Update);
 app.delete('/tasks/:id', routes.Tasks.Destroy);
 app.put('/tasks/:id/finish', routes.Tasks.Finish);
 app.put('/tasks/:id/unfinish', routes.Tasks.Unfinish);
+app.get('/phone_numbers', routes.PhoneNumbers.Index);
+app.post('/phone_numbers', routes.PhoneNumbers.Create);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
