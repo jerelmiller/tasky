@@ -1,4 +1,6 @@
 var Task = require('../models/task');
+var constants = require('../lib/constants');
+var twilio = require('twilio')(constants.twilio.accountSid, constants.twilio.authToken);
 
 module.exports = {
   Index: function(req, res) {
@@ -29,6 +31,18 @@ module.exports = {
   },
 
   Finish: function(req, res) {
+    Task.findById(req.params.id, function(err, task) {
+      twilio.sendMessage({
+        to: '+19703967316',
+        from: constants.twilio.from,
+        body: '"' + task.title + '" task has been marked as done'
+      }, function(err, responseData) {
+        if (err) {
+          console.log(err);
+        }
+      });
+    });
+
     Task.update({ _id: req.params.id }, { done: true }, { multi: false }, function(err, task) {
       res.send(200);
     });
