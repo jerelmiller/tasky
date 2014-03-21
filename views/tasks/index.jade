@@ -3,14 +3,14 @@ extends ../layout
 block content
   .container.margin-bottom-40
     ul.task-list
-      li.create-task.clearfix.grow
+      li.create-task.clearfix.grow(data-animate='{ "onEvent": true }')
         i.fui-plus.add-task
-        input.fade.slide(type='text' placeholder='Task Name (required)' name='title' maxlength=70)
+        input.fade.slide(type='text' placeholder='Task Name (required)' name='title' maxlength=70 data-animate='{ "onEvent": true }')
         .textarea-container
-          textarea.fade.slide(placeholder='Describe your task' name='body' maxlength=270)
-        button.green.create-task-button.background-less.fade.slow Create Task
-        button.cancel-task-button.background-less.fade.slow Cancel
-      li.margin-bottom-20
+          textarea.fade.slide(placeholder='Describe your task' name='body' maxlength=270 data-animate='{ "onEvent": true }')
+        button.green.create-task-button.background-less.fade.slow(data-animate='{ "onEvent": true, "delay": 500 }') Create Task
+        button.cancel-task-button.background-less.fade.slow(data-animate='{ "onEvent": true, "delay": 500 }') Cancel
+      li.margin-bottom-20.search
         form(action='/tasks' method='get')
           .input-with-icon
             if query
@@ -19,7 +19,7 @@ block content
               i.fui-search
             input(type='text' name='q', value=query placeholder='Search')
       each task in tasks
-        li.task.slide.grow.transition-all.in(data-task=task.id)
+        li.task.slide.grow.transition-all.in(data-task=task.id data-animate='{ "onEvent": true }')
           .task-action(class= task.finished() ? 'finished' : '')
           h5.no-margin.red.task-title= task.title
           input(type='text' name='title' value=task.title maxlength=70)
@@ -29,7 +29,8 @@ block content
           .task-actions
             i.fui-new.edit-task
             i.fui-cross.delete-task
-      li.fade.no-tasks There are currently no tasks
+      li.fade.no-tasks(data-animate='{ "onEvent": true }') There are currently no tasks
 
   script
     | new Tasky.Tasks.Index();
+    | Animations.listen();

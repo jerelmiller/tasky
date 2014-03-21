@@ -2,12 +2,11 @@ extends ../layout
 
 block content
   .push-quarter
-    h1.main-title.fade.slide.from-bottom.slow.no-top-margin.in To get started, add your phone number
+    h1.main-title.fade.slide.from-bottom.slow.no-top-margin(data-animate='{ "delay": 200 }') To get started, add your phone number
     .container
       form(action='/phone_numbers' method='post')
-        input.large.phone-number-input(type='text' name='number' placeholder='Your Phone Number')
-        button.background-less.large Add Phone Number
-        //- em * We will notify you when your tasks are complete
+        input.large.phone-number-input.fade.slide.from-bottom.slow(type='text' name='number' placeholder='Your Phone Number' data-animate='{ "delay": 700 }')
+        button.background-less.large.fade.slow(data-animate='{ "delay": 1200 }') Add Phone Number
+        em.fade.slow.slide.from-bottom(data-animate='{ "delay": 700 }') * We will notify you when your tasks are complete
 
-  //- script
-  //-   | new Tasky.Index();
+  script Animations.animateIn();

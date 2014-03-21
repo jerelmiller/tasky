@@ -1,17 +1,14 @@
 var express = require('express');
-var http = require('http');
 var path = require('path');
 
-// Routes
-var routes = require('./routes/config');
+var app = express();
 
 // Database Setup
 var mongo = require('mongodb');
 var mongoose = require('mongoose');
-var databaseURI = process.env.MONGOLAB_URI || process.env.MONGOHQ_URL || 'mongodb://localhost/tasky';
+var databaseURI = process.env.MONGOLAB_URI || process.env.MONGOHQ_URL || 'mongodb://localhost/tasky2';
 mongoose.connect(databaseURI);
 
-var app = express();
 
 // all environments
 app.set('port', process.env.PORT || 3000);
@@ -31,6 +28,12 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
+app.listen(app.get('port'));
+console.log('App listening on port 3000');
+
+// Routes
+var routes = require('./routes/config');
+
 app.get('/', routes.Root);
 app.get('/tasks', routes.Tasks.Index);
 app.post('/tasks', routes.Tasks.Create);
@@ -40,6 +43,3 @@ app.put('/tasks/:id/finish', routes.Tasks.Finish);
 app.put('/tasks/:id/unfinish', routes.Tasks.Unfinish);
 app.get('/phone_numbers', routes.PhoneNumbers.Index);
 app.post('/phone_numbers', routes.PhoneNumbers.Create);
-
-app.listen(app.get('port'));
-console.log('App listening on port 3000');

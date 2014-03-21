@@ -2,8 +2,11 @@ extends layout
 
 block content
   .container.push-quarter
-    h1.main-title.fade.slide.from-bottom.slow.no-top-margin Welcome to Tasky
+    h1.main-title.fade.slide.from-bottom.slow.no-top-margin(data-animate='{ "delay": 500 }') Welcome to Tasky
     .centered-button-container
-      a.button.large.background-less.fade.slow(href='/phone_numbers') Get Started
+      a.button.large.background-less.fade.slow(href='/phone_numbers' data-animate='{ "delay": 1300 }' data-animate-delay=1300) Get Started
 
-  script new Tasky.Index();
+  script
+    | Animations.animateIn(function(el) {
+    |   setTimeout(function() { $(el).removeClass('slow'); }, 500);
+    | });
