@@ -1,7 +1,9 @@
 {
-  "name": "application-name",
+  "name": "tasky",
   "version": "0.0.1",
   "private": true,
+  "main"   : "app.js",
+  "author" : "Jerel Miller",
   "scripts": {
     "start": "node app.js"
   },

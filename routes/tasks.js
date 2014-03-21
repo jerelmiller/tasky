@@ -1,7 +1,18 @@
 var Task = require('../models/task');
 var PhoneNumber = require('../models/phone_number');
-var constants = require('../lib/constants');
-var twilio = require('twilio')(constants.twilio.accountSid, constants.twilio.authToken);
+var api = require('../lib/api');
+var twilio = require('twilio')(api.twilio.accountSid, api.twilio.authToken);
+
+exports.index = function (req, res) {
+  filter = req.query.q ? { title: new RegExp(req.query.q, 'i') } : {}
+
+  Task.find(filters).sort('-_id').exec(function(err, tasks) {
+    res.render('tasks/index', {
+      tasks: tasks || [],
+      query: req.query.q
+    });
+  });
+};
 
 module.exports = {
   Index: function(req, res) {

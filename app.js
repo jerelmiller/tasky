@@ -1,7 +1,9 @@
 var express = require('express');
-var routes = require('./routes/config');
 var http = require('http');
 var path = require('path');
+
+// Routes
+var routes = require('./routes/config');
 
 // Database Setup
 var mongo = require('mongodb');
@@ -38,6 +40,5 @@ app.put('/tasks/:id/unfinish', routes.Tasks.Unfinish);
 app.get('/phone_numbers', routes.PhoneNumbers.Index);
 app.post('/phone_numbers', routes.PhoneNumbers.Create);
 
-http.createServer(app).listen(app.get('port'), function(){
-  console.log('Express server listening on port ' + app.get('port'));
-});
+app.listen(app.get('port'));
+console.log('App listening on port 3000');

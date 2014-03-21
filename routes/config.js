@@ -1,8 +1,5 @@
-Routes = {};
-Routes.Root = function(req, res) {
-  res.render('index', { skipHeader: true });
+module.exports = {
+  Root: function(req, res) { res.render('index', { skipHeader: true }); },
+  Tasks: require('./tasks'),
+  PhoneNumbers: require('./phone_numbers')
 };
-Routes.Tasks = require('./tasks');
-Routes.PhoneNumbers = require('./phone_numbers');
-
-module.exports = Routes;
