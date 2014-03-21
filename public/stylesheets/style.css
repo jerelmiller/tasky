@@ -76,12 +76,9 @@ i + i {
   margin: 0 auto;
 }
 .container {
-  width: 1280px;
+  width: 720px;
   margin: 0 auto;
   position: relative;
-}
-.container.small {
-  width: 720px;
 }
 .no-margin {
   margin: 0;
@@ -98,6 +95,9 @@ i + i {
 }
 .margin-bottom-40 {
   margin-bottom: 40px;
+}
+.margin-bottom-20 {
+  margin-bottom: 20px;
 }
 .clearfix:after {
   content: '.';
@@ -436,4 +436,14 @@ button:focus {
 }
 .cancel-task-button {
   margin-left: 10px !important;
+}
+.input-with-icon {
+  position: relative;
+}
+.input-with-icon [class*='fui-'] {
+  position: absolute;
+  right: 10px;
+  top: 13px;
+  color: #424756;
+  font-size: 1.2em;
 }

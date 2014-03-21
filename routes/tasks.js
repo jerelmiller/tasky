@@ -2,9 +2,12 @@ var Task = require('../models/task');
 
 module.exports = {
   Index: function(req, res) {
-    Task.find({}).sort('-_id').exec(function(err, tasks) {
+    filters = {}
+    if (req.query.q) filters = { title: new RegExp(req.query.q, 'i') }
+    Task.find(filters).sort('-_id').exec(function(err, tasks) {
       res.render('tasks/index', {
-        tasks: tasks || []
+        tasks: tasks || [],
+        query: req.query.q
       });
     });
   },

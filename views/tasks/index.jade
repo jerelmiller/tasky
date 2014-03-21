@@ -1,7 +1,7 @@
 extends ../layout
 
 block content
-  .container.small.margin-bottom-40
+  .container.margin-bottom-40
     ul.task-list
       li.create-task.clearfix.grow
         i.fui-plus.add-task
@@ -10,6 +10,14 @@ block content
           textarea.fade.slide(placeholder='Describe your task' name='body' maxlength=270)
         button.green.create-task-button.background-less.fade.slow Create Task
         button.cancel-task-button.background-less.fade.slow Cancel
+      li.margin-bottom-20
+        form(action='/tasks' method='get')
+          .input-with-icon
+            if query
+              a(href='/tasks' class='fui-cross')
+            else
+              i.fui-search
+            input(type='text' name='q', value=query placeholder='Search')
       each task in tasks
         li.task.slide.grow.transition-all.in(data-task=task.id)
           .task-action(class= task.finished() ? 'finished' : '')

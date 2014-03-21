@@ -74,7 +74,7 @@ Tasky.Tasks.Index = function() {
       },
       success: function(data) {
         $('.no-tasks').removeClass('in');
-        $('.create-task').after(taskHtml(data));
+        $('.task').first().before(taskHtml(data));
         setTimeout(function() {
           $('.task').first().addClass('in');
         });
