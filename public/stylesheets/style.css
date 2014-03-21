@@ -81,7 +81,7 @@ i + i {
   position: relative;
 }
 .container.small {
-  width: 50%;
+  width: 720px;
 }
 .no-margin {
   margin: 0;
@@ -221,6 +221,16 @@ button.background-less {
 .button.background-less:hover,
 button.background-less:hover {
   background: #fd6e6e;
+  color: #fff;
+}
+.button.background-less.green,
+button.background-less.green {
+  border: 1px solid #3ecd8e;
+  color: #3ecd8e;
+}
+.button.background-less.green:hover,
+button.background-less.green:hover {
+  background: #3ecd8e;
   color: #fff;
 }
 .centered-button-container {
@@ -423,4 +433,7 @@ button:focus {
   font-weight: 300;
   margin-top: 20px;
   text-align: center;
+}
+.cancel-task-button {
+  margin-left: 10px !important;
 }

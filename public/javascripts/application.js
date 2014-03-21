@@ -47,10 +47,18 @@ Tasky.Tasks.Index = function() {
   $createTask = $('.create-task');
   $createTask.find('.add-task').click(function() {
     $createTask.find('input, textarea').addClass('in');
-    $createTask.addClass('in')
+    $createTask.addClass('in');
     setTimeout(function() {
       $createTask.find('button').addClass('in');
     }, 500);
+  });
+
+  $createTask.find('.cancel-task-button').click(function() {
+    $createTask.removeClass('in');
+    $createTask.find('input, textarea, button').removeClass('in');
+    setTimeout(function() {
+      $createTask.find('input, textarea').val('');
+    }, 1000);
   });
 
   $createTask.find('.create-task-button').click(function() {

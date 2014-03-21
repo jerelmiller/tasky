@@ -8,7 +8,8 @@ block content
         input.fade.slide(type='text' placeholder='Task Name (required)' name='title' maxlength=70)
         .textarea-container
           textarea.fade.slide(placeholder='Describe your task' name='body' maxlength=270)
-        button.create-task-button.background-less.fade.slow Create Task
+        button.green.create-task-button.background-less.fade.slow Create Task
+        button.cancel-task-button.background-less.fade.slow Cancel
       each task in tasks
         li.task.slide.grow.transition-all.in(data-task=task.id)
           .task-action(class= task.finished() ? 'finished' : '')
